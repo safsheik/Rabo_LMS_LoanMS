@@ -1,6 +1,9 @@
 package saf.microservice.api.loanms.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,6 +36,12 @@ public class LoanController {
 	@GetMapping("/status")
 	public String greetings() {
 		return "SyedAli Fathima, Assalamualaikum....";
+	}
+	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping() 
+	public List<LoanEntity> getAllLoans() {
+		return loanService.findAllLoanEnity();
 	}
 	
 	@PostMapping()
